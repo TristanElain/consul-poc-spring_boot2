@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Show Configuration</title>
+</head>
+<body>
+	<h1>Configuration:</h1>
+	<ul th:each="prop : ${propertyMap}">
+		<li th:utext="'<strong>' + ${prop.key} + '</strong>: ' + ${prop.value}"></li>		
+	</ul>
+</body>
+</html>
