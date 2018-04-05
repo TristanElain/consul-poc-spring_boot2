@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Change health</title>
+</head>
+<body>
+	<p th:text="'actual health : ' + ${health}"></p>
+	<form action="" method="POST">
+		<div th:if="${health}">
+			<input type="radio" name="health" value="true" checked/> OK<br />
+			<input type="radio" name="health" value="false" /> KO<br />
+		</div>
+		
+		<div th:unless="${health}">
+			<input type="radio" name="health" value="true"/> OK<br />
+			<input type="radio" name="health" value="false" checked/> KO<br />
+		</div>
+  		<br />
+  		<input type="submit" />
+	</form>
+</body>
+</html>
