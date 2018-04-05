@@ -3,24 +3,24 @@ package fr.sogeti.poc_consul.provider;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.stereotype.Component;
 
-import com.orbitz.consul.Consul;
 import com.orbitz.consul.KeyValueClient;
 import com.orbitz.consul.model.kv.Value;
 
 @Component
 public class ConfigurationProvider {
-	private Consul client;
+	
 	private KeyValueClient kvClient;
 	
-	public ConfigurationProvider() {
-		this.client = Consul.builder().build();
-		this.kvClient = this.client.keyValueClient();
+	@Autowired
+	public ConfigurationProvider(ConsulProvider consulProvider) {
+		kvClient = consulProvider.getKVClient();
 	}
 	
-	public String getJSONProperties(String key) {
+	public String getJSONProperties(String key) {		
 		List<Value> values = kvClient.getValues(key);
 		StringBuilder sbValues = new StringBuilder();
 		for(Value value : values) {

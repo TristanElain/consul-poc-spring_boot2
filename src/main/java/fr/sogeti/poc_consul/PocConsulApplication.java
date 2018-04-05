@@ -15,7 +15,6 @@ public class PocConsulApplication extends SpringBootServletInitializer {
 		return application.sources(PocConsulApplication.class);
 	}
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(PocConsulApplication.class, args);
 	}
